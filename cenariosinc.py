@@ -59,7 +59,7 @@ def consumidor():
                 time.sleep(2)
 
 def move_right(char,times):
-        global canvas
+	global canvas
 	for k in range(0,times):
 		canvas.move(char, "20", "0")
 		canvas.update()
