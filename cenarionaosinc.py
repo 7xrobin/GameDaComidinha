@@ -82,8 +82,12 @@ def move_producers_to_table(t):
 
 	i = randint(0,t)
 
+        semaforoprod[i].acquire()
+
 	move_right(produtores[i],22)
 
+        if(count == MAX_ITENS):
+        	cheio.acquire()
         countsem.acquire()
 	coords1 = canvas.coords(produtores[i])
 	produtores[i] = canvas.delete(produtores[i])
@@ -109,22 +113,25 @@ def move_producers_to_table(t):
 	produtores[i] = canvas.delete(produtores[i])
 	produtores[i] = canvas.create_image(coords1, image = right)
 
+        semaforoprod[i].release()
+
 
 def move_consumers_to_table(t):
         global count
 
 	i = randint(0,t)
 
+        semaforocons[i].acquire()
+
 	move_left(consumidores[i],22)
 
+        if(count == 0):
+        	vazio.acquire()
         countsem.acquire()
 	coords1 = canvas.coords(consumidores[i])
 	consumidores[i] = canvas.delete(consumidores[i])
 	consumidores[i] = canvas.create_image(coords1, image = back)
 	move_up(consumidores[i],(2*i)+5)
-        print ""
-        print "platecount: ",count
-        print "length(pratos): ",len(pratos)
 	pratos[count-1] = canvas.delete(pratos[count-1])
 	pratos.pop()
         count = count - 1
@@ -144,6 +151,8 @@ def move_consumers_to_table(t):
 	coords1 = canvas.coords(consumidores[i])
 	consumidores[i] = canvas.delete(consumidores[i])
 	consumidores[i] = canvas.create_image(coords1, image = left)
+
+        semaforocons[i].release()
 
 
 root = Tkinter.Tk()
@@ -165,13 +174,17 @@ background = canvas.create_image(0, 0, image = bg, anchor="nw")
 produtores = []
 consumidores = []
 pratos = []
+semaforoprod = []
+semaforocons = []
 
 # cria personagens
 for x in range(0,N_PRODUTORES):
+        semaforoprod.append(Semaphore(value=1))
 	char = canvas.create_image(50, 200+50*x, image = right)
 	produtores.append(char)
 
 for x in range(0,N_CONSUMIDORES):
+        semaforocons.append(Semaphore(value=1))
 	char = canvas.create_image(926, 200+50*x, image = left)
 	consumidores.append(char)
 
