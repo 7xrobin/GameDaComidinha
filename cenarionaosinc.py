@@ -6,9 +6,9 @@ from array import *
 from threading import *
 
 # Parametros
-N_PRODUTORES = 7
+N_PRODUTORES = 3
 N_CONSUMIDORES = 5
-MAX_ITENS = 10
+MAX_ITENS = 5
 PRODUCAO_POR_PRODUTOR = 3*MAX_ITENS
 
 # Variaveis auxiliares
