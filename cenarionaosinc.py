@@ -205,9 +205,12 @@ for x in range(0, N_CONSUMIDORES):
         Consumidor[x].start()
 
 #Text View
-text_id= canvas.create_text(10, 10, anchor="nw")
-canvas.itemconfig(text_id, text="Hello tkinter girl")
-canvas.insert(text_id, 12, "new")
+text_id= canvas.create_text(200, 20, anchor="nw", font="Arial 20")
+canvas.itemconfig(text_id, text="Unsync Scenery")
+canvas.insert(text_id, 32, "")
+
+
+
 
 root.mainloop()
 
