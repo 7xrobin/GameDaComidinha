@@ -93,7 +93,7 @@ def move_producers_to_table(t):
 	produtores[i] = canvas.delete(produtores[i])
 	produtores[i] = canvas.create_image(coords1, image = backProdutor)
 	move_up(produtores[i],(2*i)+5)
-	prato = canvas.create_image(490,50-(3*count),image = plate)
+	prato = canvas.create_image(490,50-(3*count),image = peixe)
 	pratos.append(prato)
         count = count + 1
         countsem.release()
@@ -169,7 +169,7 @@ rightProdutor = PhotoImage(file = 'rightcooker.png')
 frontProdutor = PhotoImage(file = 'frontcooker.png')
 backProdutor = PhotoImage(file = 'backcooker.png')
 leftProdutor = PhotoImage(file = 'leftcooker.png')
-plate = PhotoImage(file = 'plate.gif')
+peixe = PhotoImage(file = 'peixe.png')
 bg = PhotoImage(file = 'Mapa.gif')
 
 
