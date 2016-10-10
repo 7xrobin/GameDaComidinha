@@ -90,7 +90,7 @@ def move_producers_to_table(t,platecount):
 
 	coords1 = canvas.coords(produtores[i])
 	produtores[i] = canvas.delete(produtores[i])
-	produtores[i] = canvas.create_image(coords1, image = back)
+	produtores[i] = canvas.create_image(coords1, image = backProdutor)
 	move_up(produtores[i],(2*i)+5)
 	prato = canvas.create_image(490,50-(3*platecount),image = plate)
 	pratos.append(prato)
@@ -98,17 +98,17 @@ def move_producers_to_table(t,platecount):
 
 	coords1 = canvas.coords(produtores[i])
 	produtores[i] = canvas.delete(produtores[i])
-	produtores[i] = canvas.create_image(coords1, image = front)
+	produtores[i] = canvas.create_image(coords1, image = frontProdutor)
 	move_down(produtores[i],(2*i)+5)
 
 	coords1 = canvas.coords(produtores[i])
 	produtores[i] = canvas.delete(produtores[i])
-	produtores[i] = canvas.create_image(coords1, image = left)
+	produtores[i] = canvas.create_image(coords1, image = leftProdutor)
 	move_left(produtores[i],22)
 
 	coords1 = canvas.coords(produtores[i])
 	produtores[i] = canvas.delete(produtores[i])
-	produtores[i] = canvas.create_image(coords1, image = right)
+	produtores[i] = canvas.create_image(coords1, image = rightProdutor)
 
 def move_consumers_to_table(t,platecount):
 	i = randint(0,t)
@@ -148,6 +148,10 @@ right = PhotoImage(file = 'right.gif')
 front = PhotoImage(file = 'front.gif')
 back = PhotoImage(file = 'back.gif')
 left = PhotoImage(file = 'left.gif')
+rightProdutor = PhotoImage(file = 'rightcooker.png')
+frontProdutor = PhotoImage(file = 'frontcooker.png')
+backProdutor = PhotoImage(file = 'backcooker.png')
+leftProdutor = PhotoImage(file = 'leftcooker.png')
 plate = PhotoImage(file = 'plate.gif')
 bg = PhotoImage(file = 'Mapa.gif')
 
@@ -160,7 +164,7 @@ pratos = []
 
 # cria personagens
 for x in range(0,N_PRODUTORES):
-	char = canvas.create_image(50, 200+50*x, image = right)
+	char = canvas.create_image(50, 200+50*x, image = rightProdutor)
 	produtores.append(char)
 
 for x in range(0,N_CONSUMIDORES):
